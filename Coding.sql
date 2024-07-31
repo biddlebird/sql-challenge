@@ -1,3 +1,52 @@
+--Build the Tables
+
+CREATE TABLE Departments (
+    dept_no VARCHAR(10) NOT NULL,
+    dept_name VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_Departments PRIMARY KEY (dept_no)
+);
+
+CREATE TABLE Titles (
+    title_id VARCHAR(10) NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_Titles PRIMARY KEY (title_id)
+);
+
+CREATE TABLE Employees (
+    emp_no INT NOT NULL,
+    emp_title_id VARCHAR(10) NOT NULL,
+    birth_date DATE NOT NULL,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    sex CHAR(1) NOT NULL,
+    hire_date DATE NOT NULL,
+    CONSTRAINT pk_Employees PRIMARY KEY (emp_no)
+);
+
+CREATE TABLE Dept_Employees (
+    emp_no INT NOT NULL,
+    dept_no VARCHAR(10) NOT NULL,
+    CONSTRAINT pk_Dept_Employees PRIMARY KEY (emp_no, dept_no)
+);
+
+CREATE TABLE Salaries (
+    emp_no INT NOT NULL,
+    salary INT NOT NULL,
+    CONSTRAINT pk_Salaries PRIMARY KEY (emp_no)
+);
+
+CREATE TABLE Dept_Managers (
+    dept_no VARCHAR(10) NOT NULL,
+    emp_no INT NOT NULL,
+    CONSTRAINT pk_Dept_Managers PRIMARY KEY (emp_no, dept_no)
+);
+
+-- You can then code in the csv files or right click and import to each table (Which I opted to do, as it just feels easier to me)
+
+
+-- DATA ANALYSIS ASSIGNMENT
+
+
 --List the employee number, last name, first name, sex, and salary of each employee.
 
 SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
